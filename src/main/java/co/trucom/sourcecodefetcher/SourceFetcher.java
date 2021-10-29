@@ -10,8 +10,6 @@ import java.net.URLConnection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import javax.xml.parsers.*;
-
 public class SourceFetcher {
 
 	private SourceFetcher() {
