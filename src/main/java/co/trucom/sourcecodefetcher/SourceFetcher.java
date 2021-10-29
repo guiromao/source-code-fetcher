@@ -7,10 +7,14 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 public class SourceFetcher {
+
+	private static final Log log = LogFactory.getLog(SourceFetcher.class.getClass());
 
 	private SourceFetcher() {
 	}
@@ -44,6 +48,9 @@ public class SourceFetcher {
 
 	private static String indentHtml(String html) {
 		Document doc = Jsoup.parse(html);
+		String caller = Thread.currentThread().getStackTrace()[Thread.currentThread().getStackTrace().length - 1]
+				.getModuleName();
+		log.info("Being called from: " + caller);
 
 		return doc.toString();
 	}
